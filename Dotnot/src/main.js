@@ -12,8 +12,10 @@ Vue.use(BootstrapVue);
 Axios.defaults.baseURL = process.env.API_ENDPOINT
 window.Axios = Axios
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,
   render: h => h(App)
 })
+

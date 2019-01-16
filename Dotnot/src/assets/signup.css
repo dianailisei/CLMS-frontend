@@ -133,17 +133,32 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   /*-- main --*/
   .main-w3layouts {
     padding: 1em 0 1em;
+    display: grid;
+    grid-template-areas: "teacher student"
   }
   
   .login-container {
-    padding: 8em;
+    padding: 9em;
   }
 
-  .main-agileinfo {
-    width: 35%;
-    margin: 3em auto;
+  .teacher-form-container {
+    width: 80%;
+    margin-right: 0%;
     background: rgba(0, 0, 0, 0.18);
     background-size: cover;
+    grid-area: "teacher";
+  }
+
+  .student-form-container {
+    width: 80%;
+    margin-left: 0%;
+    background: rgba(0, 0, 0, 0.18);
+    background-size: cover;
+    grid-area: "student";
+  }
+
+  .register {
+    width: 70%;
   }
   
   .agileits-top {
@@ -548,32 +563,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
       padding: 2.5em;
     }
   
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       margin: 2em auto;
     }
   
-    .main-agileinfo {
-      width: 36%;
-    }
   }
   
-  @media(max-width:1280px) {
-    .main-agileinfo {
-      width: 40%;
-    }
-  }
-  
-  @media(max-width:1080px) {
-    .main-agileinfo {
-      width: 46%;
-    }
-  }
-  
-  @media(max-width:1024px) {
-    .main-agileinfo {
-      width: 49%;
-    }
-  }
   
   @media(max-width:991px) {
     h1 {
@@ -586,7 +581,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   }
   
   @media(max-width:900px) {
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 58%;
     }
   
@@ -602,13 +597,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   }
   
   @media(max-width:736px) {
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 62%;
     }
   }
   
   @media(max-width:667px) {
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 67%;
     }
   }
@@ -633,7 +628,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   }
   
   @media(max-width:568px) {
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 75%;
     }
   
@@ -667,7 +662,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
       letter-spacing: 2px;
     }
   
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 85%;
       margin: 1.5em auto;
     }
@@ -700,7 +695,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   }
   
   @media(max-width:384px) {
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 88%;
     }
   
@@ -738,7 +733,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
       letter-spacing: 0px;
     }
   
-    .main-agileinfo {
+    .teacher-form-container, .student-form-container {
       width: 92%;
       margin: 1em auto;
     }

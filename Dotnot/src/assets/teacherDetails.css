@@ -103,6 +103,7 @@ body {
 	width: 150px;
 	height: 100%;
 	padding: 20px 0;
+	z-index: 999;
 }
 
 .sidebar-left img {
@@ -186,7 +187,7 @@ body {
 
 /* subjects list */
 .subjects-list-container {
-    margin-left: 10em;
+	margin-left: 10em;
 }
 .subjects-list {
     margin-top: 5em;
@@ -208,12 +209,142 @@ body {
     margin-left: 1em;
 }
 
-.subject-container p {
+.subject-container div {
     grid-template: "name";
     text-align: center;
     line-height: 100px;
 }
 
+/* subject-add */
+.subject-add-container {
+	display: grid;
+	grid-template-areas: "ceva form ceva";
+}
+
+.subject-add-form {
+	grid-area: "form";
+	align-content: center;
+	align-self: center;
+	padding: 10em 10em;
+}
+
+.input-subject-name {
+	padding: 1em;
+}
+
+.subject-add-form input[type="submit"] {
+    font-size: .9em;
+    color: #fff;
+    background: #76b852;
+    outline: none;
+    border: 1px solid #76b852;
+    cursor: pointer;
+    padding: 0.9em;
+    -webkit-appearance: none;
+    width: 10em;
+    margin: 1em 0;
+    letter-spacing: 4px;
+  }
+  
+  .subject-add-form input[type="submit"]:hover {
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+    transition: .5s all;
+    background: #8DC26F;
+  }
+
+/* subject details */
+.subject-details-container {
+	margin-top: 2em;
+	margin-right: 3em;
+	display: grid;
+	grid-template-areas: 
+	"form laboratories"
+	"form courses";
+}
+
+.subject-update-button {
+	font-size: .9em;
+    color: #fff;
+    background: #76b852;
+    outline: none;
+    border: 1px solid #76b852;
+    cursor: pointer;
+    padding: 0.9em;
+    -webkit-appearance: none;
+    width: 12em;
+    margin: 1em 0;
+    letter-spacing: 4px;
+}
+
+.subject-update-button:hover {
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+    transition: .5s all;
+    background: #8DC26F;
+  }
+
+.subject-update-form {
+	grid-area: form;
+}
+
+.subject-laboratories-container {
+	grid-area: laboratories;
+}
+
+.subject-courses-container {
+	grid-area: courses;
+}
+
+.subject-delete-button {
+	font-size: .9em;
+    color: #fff;
+    background: #CE1C1F;
+    outline: none;
+    border: 1px solid #CE1C1F;
+    cursor: pointer;
+    padding: 0.9em;
+    -webkit-appearance: none;
+	width: 12em;
+	height: 4em;
+    margin: 1em 0;
+	letter-spacing: 4px;
+}
+
+.subject-delete-button:hover {
+    transition: .5s all;
+    background: #D64C6C;
+  }
+
+.lectures-list, .laboratories-list {
+	margin-bottom: 5em;
+	margin-left: 3em;
+}
+.lecture-container, .laboratory-container {
+	width: 10em;
+    height: 4em;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-areas: "img name name";
+	margin: 0px 0px;
+}
+
+.lecture-container img, .laboratory-container img {
+    width: 3em;
+    grid-template: "img";
+	align-self: center;
+	margin-left: 0.5em;
+}
+
+.lecture-container div, .laboratory-container div {
+    grid-template: "name";
+    text-align: center;
+    line-height: 70px;
+}
 /* Making the sidebar responsive */
 
 @media (max-width: 900px) {

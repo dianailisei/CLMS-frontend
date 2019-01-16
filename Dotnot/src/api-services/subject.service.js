@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const RESOURCE_NAME = '/schedule/Students';
+const RESOURCE_NAME = '/schedule/Subjects';
 
 export default {
     getAll() {
@@ -9,10 +9,10 @@ export default {
     getById(id) {
         return Axios.get(`${RESOURCE_NAME}/${id}`);
     },
-    getByEmail(email, pwd) {
-        return Axios.get(`${RESOURCE_NAME}/${email}/${pwd}`)
+    getByTeacher(id) {
+        return Axios.get(`teachers/${id}`)
     },
-    create(data) { return Axios.post(RESOURCE_NAME, data); },
+    create(id, data) { return Axios.post(`teachers/${id}`, data); },
     update(id, data) { return Axios.put(`${RESOURCE_NAME}/${id}`, data); },
     delete(id) { return Axios.delete(`${RESOURCE_NAME}/${id}`); }
 };

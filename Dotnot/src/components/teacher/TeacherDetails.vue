@@ -10,25 +10,17 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col class="sidebar-left" cols="2">
+      <b-col class="sidebar-left">
         <img src="@/assets/logo.png">
-        <p style="color: white;">{{ teacher.firstName}} {{teacher.lastName }}</p>
+        <p style="color: white;">{{teacher.firstName}} {{teacher.lastName}}</p>
         <div class="sidebar-links">
-          <a class="link-blue selected" href="#">View Subjects</a>
-          <a class="link-red" href="#">Add Subject</a>
-          <a class="link-green" href="#">Edit Profile</a>
+          <router-link :to="{ path: '/teacher/subject/list' }" class="link-blue">View Subjects</router-link>
+          <router-link :to="{ path: '/teacher/subject/add' }" class="link-red">Add Subject</router-link>
+          <router-link :to="{ path: '/teacher/edit' }" class="link-green">Edit Profile</router-link>
         </div>
       </b-col>
       <b-col>
-        <b-row class="subjects-list-container">
-          <b-col class="subjects-list"  v-for="subject in teacher.subjects" :key="subject">
-            <div class="subject-container">
-              <img src="@/assets/logo.png">
-              <p>{{subject.name}}</p>
-            </div>
-          </b-col>
-          
-        </b-row>
+        <router-view></router-view>
       </b-col>
     </b-row>
   </b-container>
@@ -44,12 +36,11 @@ export default {
     };
   },
   created() {
-    TeacherService.getById(this.$router.currentRoute.params.id).then(
-      response => {
+    TeacherService.getById(localStorage.getItem("token"))
+      .then(response => {
         this.teacher = response.data;
-        console.log(this.teacher);
-      }
-    );
+      })
+      .catch(error => console.log(error));
   }
 };
 </script>
