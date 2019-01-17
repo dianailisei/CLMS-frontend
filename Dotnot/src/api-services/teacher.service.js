@@ -4,15 +4,15 @@ const RESOURCE_NAME = '/schedule/Teacher';
 
 export default {
     getAll() {
-        return Axios.get(RESOURCE_NAME);
+        return Schedule.get(RESOURCE_NAME);
     },
     getById(id) {
-        return Axios.get(`${RESOURCE_NAME}/${id}`);
+        return Schedule.get(`${RESOURCE_NAME}/${id}`);
     },
     getByEmail(email, pwd) {
-        return Axios.get(`${RESOURCE_NAME}/${email}/${pwd}`)
+        return Schedule.get(`${RESOURCE_NAME}/${email}/${pwd}`)
     },
-    create(data) { return Axios.post(RESOURCE_NAME, data); },
-    update(id, data) { return Axios.put(`${RESOURCE_NAME}/${id}`, data); },
-    delete(id) { return Axios.delete(`${RESOURCE_NAME}/${id}`); }
+    create(data) { return Schedule.post(RESOURCE_NAME, data); },
+    update(id, data) { return Schedule.put(`${RESOURCE_NAME}/${id}`, data); },
+    delete(id) { return Schedule.delete(`${RESOURCE_NAME}/${id}`); }
 };

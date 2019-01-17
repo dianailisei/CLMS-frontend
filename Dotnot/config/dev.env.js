@@ -4,5 +4,6 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_ENDPOINT: '"https://localhost:44385"'
+  SCHEDULE_API_ENDPOINT: '"https://localhost:44385"',
+  ATTENDANCE_API_ENDPOINT: '"https://localhost:44319"'
 })

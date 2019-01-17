@@ -11,6 +11,9 @@ import SubjectAdd from '@/components/subject/SubjectAdd'
 import TeacherEdit from '@/components/teacher/TeacherEdit'
 import SubjectDetails from '@/components/subject/SubjectDetails'
 import LaboratoryDetails from '@/components/laboratory/LaboratoryDetails'
+import LectureDetails from '@/components/lecture/LectureDetails'
+import LaboratoryAdd from '@/components/laboratory/LaboratoryAdd'
+import LectureAdd from '@/components/lecture/LectureAdd'
 
 Vue.use(Router)
 
@@ -45,13 +48,23 @@ export default new Router({
         },
         {
           path: 'subject',
-          component: SubjectDetails,
-          children: [
-            {
-              path: 'laboratory/:id',
-              component: LaboratoryDetails
-            }
-          ]
+          component: SubjectDetails
+        },
+        {
+          path: 'subject/laboratory/:id',
+          component: LaboratoryDetails
+        },
+        {
+          path: 'subject/laboratory',
+          component: LaboratoryAdd
+        },
+        {
+          path: 'subject/lecture',
+          component: LectureAdd
+        },
+        {
+          path: 'subject/lecture/:id',
+          component: LectureDetails
         }
       ]
     },

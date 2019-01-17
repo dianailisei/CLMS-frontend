@@ -45,13 +45,13 @@
     </form>
     <div class="subject-laboratories-container">
       <h2>Laboratories</h2>
-      <div v-if="subject.laboratories && subject.laboratories.length != 0">
-        <div
-          class="laboratories-list"
-          v-for="laboratory in subject.laboratories"
-          :key="laboratory.id"
-        >
-          <div class="laboratory-container">
+      <div class="lab-wrapper" v-if="subject.laboratories && subject.laboratories.length != 0">
+        <div class="laboratories-list">
+          <div
+            class="laboratory-container"
+            v-for="laboratory in subject.laboratories"
+            :key="laboratory.id"
+          >
             <img src="@/assets/logo.png">
             <div
               :id="laboratory.id"
@@ -66,9 +66,9 @@
     </div>
     <div class="subject-courses-container">
       <h2>Courses</h2>
-      <div v-if="subject.lectures && subject.lectures.length != 0">
-        <div class="lectures-list" v-for="lecture in subject.lectures" :key="lecture.id">
-          <div class="lecture-container">
+      <div class="lab-wrapper" v-if="subject.lectures && subject.lectures.length != 0">
+        <div class="lectures-list">
+          <div class="lecture-container" v-for="lecture in subject.lectures" :key="lecture.id">
             <img src="@/assets/logo.png">
             <div
               :id="lecture.id"
@@ -80,6 +80,20 @@
       <div v-else>
         <p>There are no lectures for this subject.</p>
       </div>
+    </div>
+    <div class="buttons-wrapper">
+      <div class="laboratories-list-btn">
+        <div class="laboratory-container">
+          <img src="@/assets/plus.png">
+          <div v-on:click.prevent="addLaboratory()">Add Laboratory</div>
+        </div>
+      </div>
+      <div class="laboratories-list-btn lecture-btn">
+        <div class="laboratory-container">
+          <img src="@/assets/plus.png">
+          <div v-on:click.prevent="addLecture()">Add Lecture</div>
+        </div>
+      </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <input
         type="submit"
         value="Delete subject"
@@ -92,6 +106,7 @@
 
 <script>
 import SubjectService from "@/api-services/subject.service";
+import LaboratoryService from "@/api-services/laboratory.service";
 import Router from "@/router";
 
 export default {
@@ -136,15 +151,31 @@ export default {
         .catch(error => console.log(error));
     },
     selectLecture() {
-      console.log("aici");
+      var labId = event.target.id;
+      Router.push({
+        path: `subject/lecture/${labId}`,
+        params: {
+          lectureId: labId
+        }
+      });
     },
     selectLaboratory() {
       var labId = event.target.id;
       Router.push({
         path: `subject/laboratory/${labId}`,
         params: {
-          "laboratoryId": labId
+          laboratoryId: labId
         }
+      });
+    },
+    addLaboratory() {
+      Router.push({
+        path: "subject/laboratory"
+      });
+    },
+    addLecture() {
+      Router.push({
+        path: "subject/lecture"
       });
     }
   }

@@ -9,8 +9,15 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue);
-Axios.defaults.baseURL = process.env.API_ENDPOINT
-window.Axios = Axios
+const schedule = Axios.create({
+  baseURL: 'https://localhost:44385'
+});
+const attendance = Axios.create({
+  baseURL: 'https://localhost:44319'
+});
+
+window.Schedule = schedule
+window.Attendance = attendance
 /* eslint-disable no-new */
 
 new Vue({

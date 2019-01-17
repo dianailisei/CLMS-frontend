@@ -258,11 +258,11 @@ body {
 /* subject details */
 .subject-details-container {
 	margin-top: 2em;
-	margin-right: 3em;
 	display: grid;
 	grid-template-areas: 
-	"form laboratories"
-	"form courses";
+	". form laboratories btn"
+	". form courses btn"
+	". form courses btn";
 }
 
 .subject-update-button {
@@ -279,7 +279,7 @@ body {
     letter-spacing: 4px;
 }
 
-.subject-update-button:hover {
+.subject-update-button:hover, .laboratory-update-button:hover, .add-session:hover{
     -webkit-transition: .5s all;
     -moz-transition: .5s all;
     -o-transition: .5s all;
@@ -311,8 +311,8 @@ body {
     -webkit-appearance: none;
 	width: 12em;
 	height: 4em;
-    margin: 1em 0;
 	letter-spacing: 4px;
+	margin: 0px 0px;
 }
 
 .subject-delete-button:hover {
@@ -325,12 +325,12 @@ body {
 	margin-left: 3em;
 }
 .lecture-container, .laboratory-container {
-	width: 10em;
+	width: 13em;
     height: 4em;
     background-color: rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-areas: "img name name";
-	margin: 0px 0px;
+	margin: 5px 5px;
 }
 
 .lecture-container img, .laboratory-container img {
@@ -344,6 +344,127 @@ body {
     grid-template: "name";
     text-align: center;
     line-height: 70px;
+}
+ .buttons-wrapper {
+	 grid-area: btn;
+	 align-content: center;
+ }
+.lab-wrapper {
+	display: grid;
+	grid-template-areas: ". labs";
+}
+
+.laboratories-list, .lectures-list {
+	grid-area: labs;
+	align-content: right;
+}
+
+.laboratories-list-btn {
+	align-content: center;
+}
+
+.lecture-btn {
+	align-content: center;
+}
+/* laboratory details page */
+
+.laboratory-details-container {
+	margin-left: 10em;
+	padding-top: 1em;
+	display: grid;
+	grid-template-areas: 
+	"form active-session"
+	"form active-session"
+	"form add-btn";
+}
+
+.laboratory-update-form {
+	
+	padding-left: 1em;
+	grid-area: form;
+}
+
+.laboratory-update-button, .add-session, .view-session {
+	font-size: .9em;
+    color: #fff;
+    background: #76b852;
+    outline: none;
+    border: 1px solid #76b852;
+    cursor: pointer;
+    padding: 0.9em;
+    -webkit-appearance: none;
+    width: 14em;
+    margin: 1em 0;
+    letter-spacing: 4px;
+}
+
+.active-sessions-container {
+	grid-area: active-session;
+}
+
+.add-session-container {
+	grid-area: add-btn;
+}
+
+.add-session {
+    width: 10em;
+}
+
+.view-session {
+	width: 12em;
+}
+
+.active-sessions {
+	margin-top: 1em;
+	margin-left: 10em;
+}
+
+.selected-option {
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 25px;
+}
+
+/* laboratory create page */
+
+.lab-create-container {
+	margin-top: 2em;
+	display: grid;
+	grid-template-areas: 
+	"form";
+}
+
+.lab-form {
+	grid-area: form;
+	align-self:center;
+	justify-content: center;
+}
+
+.input-lab-name {
+	margin: 0px 0px;
+	padding: 0px;
+}
+
+.lab-create-button {
+	font-size: .9em;
+	color: #fff;
+	background: #76b852;
+	outline: none;
+	border: 1px solid #76b852;
+	cursor: pointer;
+	padding: 0.9em;
+	-webkit-appearance: none;
+	width: 16em;
+	margin: 1em 0;
+	letter-spacing: 4px;
+}
+
+.subject-create-button:hover {
+	-webkit-transition: .5s all;
+	-moz-transition: .5s all;
+	-o-transition: .5s all;
+	-ms-transition: .5s all;
+	transition: .5s all;
+	background: #8DC26F;
 }
 /* Making the sidebar responsive */
 
@@ -413,4 +534,34 @@ body {
 	}
 
 }
+
+/* Box styles */
+.myBox {
+	border: none;
+	padding: 5px;
+	font: 24px/36px sans-serif;
+	width: 300px;
+	height: 130px;
+	overflow: scroll;
+	}
+	
+	/* Scrollbar styles */
+	::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+	}
+	
+	::-webkit-scrollbar-track {
+	border: 1px solid #76b852;
+	border-radius: 10px;
+	}
+	
+	::-webkit-scrollbar-thumb {
+	background: #76b852;  
+	border-radius: 10px;
+	}
+	
+	::-webkit-scrollbar-thumb:hover {
+	background: #76b852;  
+	}
 
