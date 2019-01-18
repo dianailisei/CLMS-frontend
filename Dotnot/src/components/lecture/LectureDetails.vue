@@ -160,11 +160,17 @@ export default {
         this.laboratory
       )
         .then(response => {
-          Router.push({
-            path: `/teacher/subject/lecture/${this.laboratory.id}`
-          });
+          this.$swal("Success!", "", "success").then(
+            Router.push({
+              path: `/teacher/subject/lecture/${this.laboratory.id}`
+            })
+          );
         })
-        .catch(error => console.log(error));
+        .catch(error => this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "danger"
+          ));
     },
     addQuestion() {
       QuestionService.create({

@@ -40,7 +40,7 @@ export default {
               this.studentNames.push(
                 response.data.firstName + " " + response.data.lastName
               );
-              console.log(this.studentNames);
+              // console.log(this.studentNames);
             })
             .catch(error => console.log(error));
         });

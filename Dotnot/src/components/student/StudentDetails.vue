@@ -10,7 +10,6 @@
       </b-col>
     </b-row>
     <b-row>
-      
       <b-col class="sidebar-left" cols="2">
         <img src="@/assets/logo.png">
         <p style="color: white;">{{student.firstName}} {{student.lastName}}</p>
@@ -20,18 +19,21 @@
           <a class="link-green" href="#">Edit Profile</a>
         </div>
       </b-col>
-      <b-col><b-row>
+      <b-col>
+        <b-row>
           <router-view></router-view>
         </b-row>
         <b-row class="subjects-list-container">
           <b-col class="subjects-list" v-for="subject in subjects" :key="subject.id">
             <div class="subject-container">
               <img src="@/assets/logo.png">
-              <div :id="subject.id" v-on:click="selectSubject()">{{subject.parentSubject.name}} - {{subject.name}}</div>
+              <div
+                :id="subject.id"
+                v-on:click="selectSubject()"
+              >{{subject.parentSubject.name}} - {{subject.name}}</div>
             </div>
           </b-col>
         </b-row>
-        
       </b-col>
     </b-row>
   </b-container>
@@ -56,12 +58,10 @@ export default {
     };
   },
   created() {
-    StudentService.getById(localStorage.getItem('token')).then(
-      response => {
-        this.student = response.data;
-      }
-    );
-    LectureService.getByStudentId(localStorage.getItem('token'))
+    StudentService.getById(localStorage.getItem("token")).then(response => {
+      this.student = response.data;
+    });
+    LectureService.getByStudentId(localStorage.getItem("token"))
       .then(response => {
         this.subjects = response.data;
         this.subjects.forEach(element => {
@@ -71,20 +71,7 @@ export default {
       .catch(error => console.log(error));
   },
   methods: {
-    submitAnswer() {
-      console.log(
-        this.$router.currentRoute.params.id,
-        this.question.id,
-        this.answer
-      );
-      AnswerService.create({
-        studentId: this.$router.currentRoute.params.id,
-        questionId: this.question.id,
-        text: this.answer
-      })
-        .then(response => console.log(response.data))
-        .catch(error => console.log(error));
-    },
+    
     selectSubject() {
       this.subjectId = event.currentTarget.id;
       localStorage.setItem("subjectId", this.subjectId);

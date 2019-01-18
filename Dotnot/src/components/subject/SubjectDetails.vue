@@ -93,7 +93,20 @@
           <img src="@/assets/plus.png">
           <div v-on:click.prevent="addLecture()">Add Lecture</div>
         </div>
-      </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <input
         type="submit"
         value="Delete subject"
@@ -135,20 +148,36 @@ export default {
     updateSubject() {
       SubjectService.update(localStorage.getItem("subjectId"), this.subject)
         .then(response => {
-          Router.push({
-            path: "/teacher/subject"
-          });
+          this.$swal("Success!", "", "success").then(
+            Router.push({
+              path: "/teacher/subject"
+            })
+          );
         })
-        .catch(error => console.log(error));
+        .catch(error =>
+          this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "warning"
+          )
+        );
     },
     deleteSubject() {
       SubjectService.delete(localStorage.getItem("subjectId"))
         .then(response => {
-          Router.push({
-            path: "/teacher/subject/list"
-          });
+          this.$swal("Success!", "", "success").then(
+            Router.push({
+              path: "/teacher/subject/list"
+            })
+          );
         })
-        .catch(error => console.log(error));
+        .catch(error =>
+          this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "warning"
+          )
+        );
     },
     selectLecture() {
       var labId = event.target.id;

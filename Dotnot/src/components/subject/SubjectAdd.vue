@@ -18,7 +18,7 @@
         v-model="subject.year"
         class="input-subject-name"
       >
-        <option value="" hidden disabled selected>Select year</option>
+        <option value hidden disabled selected>Select year</option>
         <option value="1">
           1
           <sup>st</sup> year
@@ -63,11 +63,19 @@ export default {
       SubjectService.create(localStorage.getItem("token"), this.subject)
         .then(response => {
           localStorage.setItem("subjectId", response.data);
-          Router.push({
-            path: "/teacher/subject"
-          });
+          this.$swal("Success!", "", "success").then(
+            Router.push({
+              path: "/teacher/subject"
+            })
+          );
         })
-        .catch(error => console.log(error));
+        .catch(error =>
+          this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "warning"
+          )
+        );
     }
   }
 };

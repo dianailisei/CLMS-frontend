@@ -53,11 +53,19 @@ export default {
         this.lab
       )
         .then(response =>
-          Router.push({
-            path: "/teacher/subject"
-          })
+          this.$swal("Success!", "", "success").then(
+            Router.push({
+              path: "/teacher/subject"
+            })
+          )
         )
-        .catch(error => console.log(error));
+        .catch(error =>
+          this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "danger"
+          )
+        );
     }
   }
 };

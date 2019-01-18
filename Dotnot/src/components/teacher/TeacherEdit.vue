@@ -14,7 +14,7 @@
 import TeacherService from "@/api-services/teacher.service";
 
 export default {
-  name: "SubjectAdd",
+  name: "TeacherEdit",
   data() {
     return {
       teacher: {}

@@ -1,6 +1,6 @@
 <template>
   <div style="margin-left:20em;">
-    <form action>
+    <form action class="lab-form answer-form">
       <select v-model="qId">
         <option disabled selected hidden value>Select question</option>
         <option v-for="q in questions" :key="q.id" :value="q.id">{{q.text}}</option>
@@ -10,7 +10,7 @@
       <textarea rows="4" cols="30" placeholder="Type your answer here..." v-model="text"></textarea>
       <br>
       <br>
-      <input type="submit" v-on:click.prevent="submitAnswer()">
+      <input class="lab-create-button" type="submit" v-on:click.prevent="submitAnswer()">
     </form>
   </div>
 </template>
@@ -41,8 +41,14 @@ export default {
         questionId: this.qId,
         text: this.text
       })
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+        .then(response => this.$swal("Success!", "", "success"))
+        .catch(error =>
+          this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "warning"
+          )
+        );
     }
   }
 };

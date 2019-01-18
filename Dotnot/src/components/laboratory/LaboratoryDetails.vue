@@ -159,11 +159,17 @@ export default {
         this.laboratory
       )
         .then(response => {
-          Router.push({
-            path: `/teacher/subject/laboratory/${laboratory.id}`
-          });
+          this.$swal("Success!", "", "success").then(
+            Router.push({
+              path: `/teacher/subject/laboratory/${laboratory.id}`
+            })
+          );
         })
-        .catch(error => console.log(error));
+        .catch(error => this.$swal(
+            "Error!",
+            "An error has occured. Please try again",
+            "danger"
+          ));
     },
     addSession() {
       SessionService.create({
@@ -192,7 +198,7 @@ export default {
           }
         })
         .catch(error => console.log(error));
-        setTimeout(() => alert(this.message), 4000);
+      setTimeout(() => alert(this.message), 4000);
     },
     exampleFilter(elem) {
       switch (elem.nodeName.toUpperCase()) {
