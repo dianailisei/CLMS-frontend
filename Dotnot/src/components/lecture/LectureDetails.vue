@@ -72,7 +72,23 @@
     </form>
     <div class="add-question">
       <h2>Add Question</h2>
-      <textarea rows="4" cols="50"></textarea>
+      <textarea rows="4" cols="50" v-model="question.text"></textarea>
+      <br>
+      <br>
+      <input
+        type="text"
+        class="input-laboratory-form"
+        v-model="question.points"
+        placeholder="No. of points"
+      >
+      <br>
+      <br>
+      <input
+        type="text"
+        class="input-laboratory-form"
+        v-model="question.time"
+        placeholder="Time for submitting answers"
+      >
       <br>
       <br>
       <input
@@ -82,13 +98,29 @@
         v-on:click.prevent="addQuestion()"
       >
     </div>
-    <div class="add-session-container"></div>
+    <div class="questions-container">
+      <h2>Questions</h2>
+      <div class="myBox questions" v-if="questions && questions.length != 0">
+        <div v-for="q in questions" :key="q.id">
+          <div
+            style="font-size: 14px;"
+            v-on:click.prevent="toggleOption()"
+            v-on:dblclick.prevent="viewQuestion()"
+            :id="q.id"
+          >"{{q.text}}" - {{q.points}} points</div>
+        </div>
+      </div>
+      <div v-else>
+        <p>There are no questions.</p>
+      </div>
+    </div>
   </b-row>
 </template>
 
 <script>
 import LectureService from "@/api-services/lecture.service";
 import StudentService from "@/api-services/student.service";
+import QuestionService from "@/api-services/question.service";
 import Router from "@/router";
 
 export default {
@@ -96,7 +128,13 @@ export default {
   data() {
     return {
       laboratory: {},
-      lecturer: ""
+      lecturer: "",
+      question: {
+        text: "",
+        points: "",
+        time: ""
+      },
+      questions: []
     };
   },
   created() {
@@ -108,6 +146,10 @@ export default {
           " " +
           this.laboratory.lecturer.lastName;
       })
+      .catch(error => console.log(error));
+
+    QuestionService.getByCourse(this.$route.params.id)
+      .then(response => (this.questions = response.data))
       .catch(error => console.log(error));
   },
   methods: {
@@ -125,7 +167,37 @@ export default {
         .catch(error => console.log(error));
     },
     addQuestion() {
-      console.log("aici");
+      QuestionService.create({
+        teacherId: localStorage.getItem("token"),
+        courseId: this.$route.params.id,
+        duration: this.question.time,
+        points: this.question.points,
+        text: this.question.text
+      })
+        .then(response =>
+          Router.push({
+            path: `/teacher/subject/lecture/${this.$route.params.id}`
+          })
+        )
+        .catch(error => console.log(error));
+    },
+    toggleOption() {
+      var div = event.target;
+      if (div.className == "") {
+        div.className = "selected-option";
+        localStorage.setItem("sessionId", div.id);
+      } else {
+        div.classList.remove("selected-option");
+      }
+    },
+    viewQuestion() {
+      let questionId = event.target.id;
+      Router.push({
+        path: `/teacher/subject/lecture/question/${questionId}`,
+        params: {
+          questionId: questionId
+        }
+      });
     }
   }
 };

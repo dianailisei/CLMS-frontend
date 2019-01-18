@@ -30,7 +30,7 @@
 </template>
 <script>
 import LectureService from "@/api-services/lecture.service";
-
+import Router from "@/router";
 export default {
   name: "LectureAdd",
   data() {

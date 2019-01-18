@@ -107,7 +107,7 @@ export default {
         this.studentInput.password
       )
         .then(response => {
-          localStorage.setItem("token", response.data);
+          localStorage.setItem("token", response.data.id);
           Router.push({
             name: "StudentDetails"
           });

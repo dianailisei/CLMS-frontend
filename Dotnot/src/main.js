@@ -15,9 +15,13 @@ const schedule = Axios.create({
 const attendance = Axios.create({
   baseURL: 'https://localhost:44319'
 });
+const trivia = Axios.create({
+  baseURL: 'https://localhost:44337'
+});
 
 window.Schedule = schedule
 window.Attendance = attendance
+window.Trivia = trivia
 /* eslint-disable no-new */
 
 new Vue({

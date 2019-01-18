@@ -10,11 +10,12 @@ import SubjectList from '@/components/subject/SubjectList'
 import SubjectAdd from '@/components/subject/SubjectAdd'
 import TeacherEdit from '@/components/teacher/TeacherEdit'
 import SubjectDetails from '@/components/subject/SubjectDetails'
+import StudSubjectDetails from '@/components/subject/StudSubjectDetails'
 import LaboratoryDetails from '@/components/laboratory/LaboratoryDetails'
 import LectureDetails from '@/components/lecture/LectureDetails'
 import LaboratoryAdd from '@/components/laboratory/LaboratoryAdd'
 import LectureAdd from '@/components/lecture/LectureAdd'
-
+import QuestionDetails from '@/components/question/QuestionDetails'
 Vue.use(Router)
 
 export default new Router({
@@ -65,14 +66,24 @@ export default new Router({
         {
           path: 'subject/lecture/:id',
           component: LectureDetails
+        },
+        {
+          path: 'subject/lecture/question/:id',
+          component: QuestionDetails
         }
       ]
     },
 
     {
-      path: '/student/:id',
+      path: '/student',
       name: 'StudentDetails',
-      component: StudentDetails
+      component: StudentDetails,
+      children: [
+        {
+          path: 'subject/:id',
+          component: StudSubjectDetails
+        }
+      ]
     },
     {
       path: '/login',
